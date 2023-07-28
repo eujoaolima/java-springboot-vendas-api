@@ -2,6 +2,7 @@ package com.soulcode.vendas.services;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import com.soulcode.vendas.models.Produto;
+import com.soulcode.vendas.models.dtos.ProdutoDTO;
 import com.soulcode.vendas.repositories.ProdutoRepository;
 
 @Service
@@ -17,49 +19,51 @@ public class ProdutoService {
     @Autowired
     private ProdutoRepository produtoRepository;
 
-    public Produto save(Produto produto) {
+    public ProdutoDTO save(ProdutoDTO dto) {
+        Produto produto = ProdutoDTO.convert(dto);
         produto = this.produtoRepository.save(produto);
-        return produto;
+        return new ProdutoDTO(produto);
     }
 
-    public List<Produto> findAll() {
+    public List<ProdutoDTO> findAll() {
         List<Produto> produtos = this.produtoRepository.findAll();
-        return produtos;
+        return produtos.stream().map(ProdutoDTO::new).collect(Collectors.toList());
     }
 
-    public Produto findById(Long id) {
+    public ProdutoDTO findById(Long id) {
         Optional<Produto> resultado = this.produtoRepository.findById(id);
         if (resultado.isEmpty()) {
             throw new RuntimeException("O produto não foi encontrado :(");
         } else {
-            return resultado.get();
+            return new ProdutoDTO(resultado.get());
         }
     }
 
-    public Produto deleteById(@PathVariable Long id) {
-        Produto produto = findById(id);
-        if (produto == null) {
+    public ProdutoDTO deleteById(@PathVariable Long id) {
+        ProdutoDTO dto = findById(id);
+        if (dto == null) {
             throw new RuntimeException("O produto não foi encontrado :(");
         } else {
             this.produtoRepository.deleteById(id);
-            return produto;
+            return dto;
         }
     }
 
-    public List<Produto> deleteAll() {
-        List<Produto> produto = findAll();
+    public List<ProdutoDTO> deleteAll() {
+        List<ProdutoDTO> produto = findAll();
         this.produtoRepository.deleteAll();
         return produto;
     }
 
-    public Produto updateById(@PathVariable Long id, @RequestBody Produto produto) {
+    public ProdutoDTO updateById(@PathVariable Long id, @RequestBody ProdutoDTO dto) {
         this.findById(id);
-        if (produto == null) {
+        Produto produto = ProdutoDTO.convert(dto);
+        if (dto == null) {
             throw new RuntimeException("O produto não foi encontrado :(");
         } else {
             produto.setId(id);
             produto = this.produtoRepository.save(produto);
-            return produto;
+            return new ProdutoDTO(produto);
         }
     }
 }

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soulcode.vendas.models.Produto;
+import com.soulcode.vendas.models.dtos.ProdutoDTO;
 import com.soulcode.vendas.services.ProdutoService;
 
 @RestController
@@ -18,32 +19,32 @@ public class ProdutoController {
     private ProdutoService produtoService;
 
     @RequestMapping(value = "/produtos", method = RequestMethod.POST)
-    public Produto save(@RequestBody Produto produto) {
-        return this.produtoService.save(produto);
+    public ProdutoDTO save(@RequestBody ProdutoDTO dto) {
+        return this.produtoService.save(dto);
     }
 
     @RequestMapping(value = "/produtos", method = RequestMethod.GET)
-    public List<Produto> findAll() {
+    public List<ProdutoDTO> findAll() {
         return this.produtoService.findAll();
     }
 
     @RequestMapping(value = "/produtos/{id}", method = RequestMethod.GET)
-    public Produto findById(@PathVariable Long id) {
+    public ProdutoDTO findById(@PathVariable Long id) {
         return this.produtoService.findById(id);
     }
 
     @RequestMapping(value = "/produtos/{id}", method = RequestMethod.DELETE)
-    public Produto deleteById(@PathVariable Long id) {
+    public ProdutoDTO deleteById(@PathVariable Long id) {
         return this.produtoService.deleteById(id);
     }
 
     @RequestMapping(value = "/produtos", method = RequestMethod.DELETE)
-    public List<Produto> deleteAll() {
+    public List<ProdutoDTO> deleteAll() {
         return this.produtoService.deleteAll();
     }
 
     @RequestMapping(value = "/produtos/{id}", method = RequestMethod.PUT)
-    public Produto updateById(@PathVariable Long id, @RequestBody Produto produto) {
-        return this.produtoService.updateById(id, produto);
+    public ProdutoDTO updateById(@PathVariable Long id, @RequestBody ProdutoDTO dto) {
+        return this.produtoService.updateById(id, dto);
     }
 }
