@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.soulcode.vendas.models.Produto;
 import com.soulcode.vendas.models.dtos.ProdutoDTO;
 import com.soulcode.vendas.services.ProdutoService;
 

@@ -1,4 +1,4 @@
-package com.soulcode.vendas;
+package com.soulcode.vendas.controllers;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
