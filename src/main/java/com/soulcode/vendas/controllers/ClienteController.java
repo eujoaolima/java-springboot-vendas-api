@@ -10,7 +10,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soulcode.vendas.models.dtos.ClienteDTO;
-import com.soulcode.vendas.models.dtos.ProdutoDTO;
 import com.soulcode.vendas.services.ClienteService;
 
 @RestController
@@ -39,7 +38,7 @@ public class ClienteController {
     // Atualizar informações do cliente
     @RequestMapping(value="/clientes/{id}", method=RequestMethod.PUT)
     public ClienteDTO updateById(@PathVariable Long id, @RequestBody ClienteDTO dto) {
-        return this.clienteService.updateByID(id, dto);
+        return this.clienteService.updateById(id, dto);
     }
 
     // Deletar cliente por ID
@@ -53,6 +52,4 @@ public class ClienteController {
     public List<ClienteDTO> deleteAll() {
         return this.clienteService.deleteAll();
     }
-
-
 }
