@@ -43,6 +43,10 @@ public class Cliente {
     public Cliente() {
     }
 
+    public Cliente(Long id) {
+        this.id = id;
+    }
+
     public Long getId() {
         return this.id;
     }

@@ -62,4 +62,8 @@ public class Venda {
 
     public Venda() {
     }
+
+    public Venda(Long id) {
+        this.id = id;
+    }
 }

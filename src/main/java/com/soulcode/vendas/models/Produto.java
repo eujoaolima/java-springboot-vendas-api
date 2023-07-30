@@ -41,6 +41,10 @@ public class Produto {
         return this.id;
     }
 
+    public Produto(Long id) {
+        this.id = id;
+    }
+
     public void setId(Long id) {
         this.id = id;
     }

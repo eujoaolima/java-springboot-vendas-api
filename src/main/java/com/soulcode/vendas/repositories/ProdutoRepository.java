@@ -7,5 +7,4 @@ import com.soulcode.vendas.models.Produto;
 
 @Repository
 public interface ProdutoRepository extends JpaRepository<Produto, Long> {
-    
 }
