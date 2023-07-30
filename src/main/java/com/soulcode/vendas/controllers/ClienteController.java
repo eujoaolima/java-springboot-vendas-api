@@ -42,7 +42,7 @@ public class ClienteController {
     }
 
     // Deletar cliente por ID
-    @RequestMapping(value="/clientes/{id}", method=RequestMethod.GET)
+    @RequestMapping(value="/clientes/{id}", method=RequestMethod.DELETE)
     public ClienteDTO deleteById(@PathVariable Long id) {
         return this.clienteService.deleteById(id);
     }
