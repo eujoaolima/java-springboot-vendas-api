@@ -4,15 +4,20 @@ import com.soulcode.vendas.models.Item;
 import com.soulcode.vendas.models.Produto;
 import com.soulcode.vendas.models.Venda;
 
+import jakarta.validation.constraints.NotNull;
+
 public class ItemDTO {
     private Long id;
 
+    @NotNull(message="O valor parcial deve ser preenchido")
     private Float valorParcial;
 
+    @NotNull(message="A quantidade deve ser preenchida")
     private Integer quantidade;
 
     private Long idVenda;
 
+    @NotNull(message="O ID do produto deve ser preenchido")
     private Long idProduto;
 
     public Long getId() {

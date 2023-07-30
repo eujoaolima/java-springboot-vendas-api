@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.soulcode.vendas.models.dtos.VendaDTO;
 import com.soulcode.vendas.services.VendaService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class VendaController {
     @Autowired
@@ -19,7 +21,7 @@ public class VendaController {
 
     // Criar venda
     @PostMapping("/vendas")
-    public VendaDTO save(@RequestBody VendaDTO dto) {
+    public VendaDTO save(@RequestBody @Valid VendaDTO dto) {
         return this.vendaService.save(dto);
     }
 

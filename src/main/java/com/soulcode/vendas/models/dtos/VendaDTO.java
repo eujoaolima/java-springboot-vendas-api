@@ -6,13 +6,22 @@ import java.util.stream.Collectors;
 import com.soulcode.vendas.models.Cliente;
 import com.soulcode.vendas.models.Venda;
 
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+
 public class VendaDTO {
     private Long id;
 
+    @NotBlank(message="A data de registro deve ser preenchida")
     private String dataRegistro;
 
+    @NotNull(message="O ID do cliente deve ser preenchido")
     private Long idCliente;
 
+    @NotEmpty(message="Você deve preencher o carrinho com algum item")
+    @Valid
     private List<ItemDTO> itens;
 
     public VendaDTO() {

@@ -2,15 +2,22 @@ package com.soulcode.vendas.models.dtos;
 
 import com.soulcode.vendas.models.Produto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+
 public class ProdutoDTO {
     private Long id;
 
+    @NotBlank(message="O código deve ser preenchido")
     private String codigo;
 
+    @NotBlank(message="A descrição deve ser preenchida")
     private String descricao;
 
+    @NotNull(message="O preço deve ser preenchido")
     private Float preco;
-
+    
+    @NotBlank(message="A unidade de medida deve ser preenchida")
     private String unidadeMedida;
 
     private String grupo;

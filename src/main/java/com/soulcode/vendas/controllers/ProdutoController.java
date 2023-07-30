@@ -12,13 +12,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.soulcode.vendas.models.dtos.ProdutoDTO;
 import com.soulcode.vendas.services.ProdutoService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class ProdutoController {
     @Autowired
     private ProdutoService produtoService;
 
     @RequestMapping(value = "/produtos", method = RequestMethod.POST)
-    public ProdutoDTO save(@RequestBody ProdutoDTO dto) {
+    public ProdutoDTO save(@RequestBody @Valid ProdutoDTO dto) {
         return this.produtoService.save(dto);
     }
 
@@ -43,7 +45,7 @@ public class ProdutoController {
     }
 
     @RequestMapping(value = "/produtos/{id}", method = RequestMethod.PUT)
-    public ProdutoDTO updateById(@PathVariable Long id, @RequestBody ProdutoDTO dto) {
+    public ProdutoDTO updateById(@PathVariable Long id, @RequestBody @Valid ProdutoDTO dto) {
         return this.produtoService.updateById(id, dto);
     }
 }

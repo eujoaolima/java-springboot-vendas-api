@@ -1,27 +1,43 @@
 package com.soulcode.vendas.models.dtos;
 
+import org.hibernate.validator.constraints.br.CPF;
+
 import com.soulcode.vendas.models.Cliente;
+
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
 
 public class ClienteDTO {
 
     private Long id;
 
+    @NotBlank(message="O nome deve ser preenchido")
     private String nome;
 
+    @NotBlank(message="O e-mail deve ser preenchido")
+    @Email(message="O e-mail está inválido")
     private String email;
 
+    @NotBlank(message="O CPF deve ser preenchido")
+    @CPF(message="O e-mail está inválido")
     private String cpf;
 
+    @NotBlank(message="A data de nascimento deve ser preenchida")
     private String dataNascimento;
 
+    @NotBlank(message="O telefone deve ser preenchido")
     private String telefone;
 
+    @NotBlank(message="O logradouro deve ser preenchido")
     private String logradouro;
 
+    @NotBlank(message="O número do endereço deve ser preenchido")
     private String numeroEndereco;
 
+    @NotBlank(message="A cidade deve ser preenchida")
     private String cidade;
 
+    @NotBlank(message="O estado deve ser preenchido")
     private String estado;
 
     public ClienteDTO() {

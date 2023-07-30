@@ -11,5 +11,5 @@ import com.soulcode.vendas.models.Item;
 @Repository
 public interface ItemRepository extends JpaRepository<Item, Long> {
     @Query(value = "SELECT * FROM item WHERE venda_id = ?", nativeQuery = true)
-    public List<Item> findByVenda(Long idVenda);
+    public List<Item> findByIdVenda(Long idVenda);
 }

@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.soulcode.vendas.models.dtos.ClienteDTO;
 import com.soulcode.vendas.services.ClienteService;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class ClienteController {
     @Autowired
@@ -31,13 +33,13 @@ public class ClienteController {
 
     // Criar um novo cliente
     @RequestMapping(value="/clientes", method=RequestMethod.POST)
-    public ClienteDTO save(@RequestBody ClienteDTO dto) {
+    public ClienteDTO save(@RequestBody @Valid ClienteDTO dto) {
         return this.clienteService.save(dto);
     }
 
     // Atualizar informações do cliente
     @RequestMapping(value="/clientes/{id}", method=RequestMethod.PUT)
-    public ClienteDTO updateById(@PathVariable Long id, @RequestBody ClienteDTO dto) {
+    public ClienteDTO updateById(@PathVariable Long id, @RequestBody @Valid ClienteDTO dto) {
         return this.clienteService.updateById(id, dto);
     }
 
